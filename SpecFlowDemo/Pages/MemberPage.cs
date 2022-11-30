@@ -18,7 +18,12 @@ namespace SpecFlowDemo.Pages
     {
         
         ChromeDriver driver = new ChromeDriver();
-       
+        private IWebElement txtUserName => driver.FindElement(By.XPath("//*[@type='text']"));
+        private IWebElement txtPassword => driver.FindElement(By.XPath("//*[@id='password']"));
+        private IWebElement btnLogin => driver.FindElement(By.XPath("//*[@type='submit']"));
+        private IWebElement btnsignin => driver.FindElement(By.XPath("(//*[@class='linkedin'])[2]"));
+
+
         public MemberPage()
         {
         }
@@ -32,48 +37,37 @@ namespace SpecFlowDemo.Pages
        
         public void ClickSignIn()
         {
-            driver.FindElement(By.XPath("(//*[@class='linkedin'])[2]")).Click();
+            btnsignin.Click();
         }
         public void EnterValidCredentials(string UserName, string Password)
         {
-            driver.FindElement(By.XPath("//*[@type='text']")).SendKeys(UserName);
-            driver.FindElement(By.XPath("//*[@id='password']")).SendKeys(Password);
+            txtUserName.SendKeys(UserName);
+            txtPassword.SendKeys(Password);
             Thread.Sleep(1000);
         }
     
         public void ClickTheLogin()
         {
-            driver.FindElement(By.XPath("//*[@type='submit']")).Click();
+            btnLogin.Click();
         }
-    
-        public void ClickTheAdminDashboard()
+            public void NavigateAllMenu()
         {
+            driver.FindElement(By.XPath("(//*[@id='v-pills-home-tab'])[1]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("(//*[@id='v-pills-home-tab'])[2]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("(//*[@id='v-pills-home-tab'])[3]")).Click();
+            Thread.Sleep(1000);
             driver.FindElement(By.XPath("(//*[@id='v-pills-home-tab'])[4]")).Click();
+            Thread.Sleep(1000);
         }
-        public void clickonSections()
+        public void CloseDriver()
         {
-            driver.FindElement(By.XPath("//*[@class='fa fa-plus-square']")).Click();
+            driver.Dispose();
         }
 
-        public void clickonAdd()
-        {
-            driver.FindElement(By.XPath("//*[@id='add-main-section']")).Click();
-        }
 
-        internal void TypetheDetails(string sectionname, string description)
-        {
-            driver.FindElement(By.XPath("//*[@id='main-section-name']")).SendKeys(sectionname);
-            driver.FindElement(By.XPath("//*[@id='main-section-description']")).SendKeys(description);
-        }
 
-        internal void clickonSave()
-        {
-            driver.FindElement(By.XPath("//*[@id='add-main-section-btn']")).Click();
-        }
-
-       
-
-    
     }
 
 

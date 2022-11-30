@@ -12,5 +12,5 @@ Scenario: Perform Login of  Application site
 		| UserName  | Password   |
 		| Donamercy | Donamercy1 |
 	When I click signin button
-   #Then Navigate for All Menu Pages 
+    Then Navigate for All Menu Pages 
 	Then I click signout button

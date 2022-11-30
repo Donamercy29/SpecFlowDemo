@@ -124,6 +124,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 14
  testRunner.When("I click signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 15
+    testRunner.Then("Navigate for All Menu Pages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
 #line 16
  testRunner.Then("I click signout button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

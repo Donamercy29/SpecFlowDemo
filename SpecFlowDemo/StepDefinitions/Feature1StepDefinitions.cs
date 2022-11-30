@@ -3,19 +3,15 @@ using OpenQA.Selenium;
 using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using SpecFlowDemo.Pages;
 
 namespace SpecFlowDemo.StepDefinitions
 {
     [Binding]
     public class Feature1StepDefinitions
     {
-        ChromeDriver driver = new ChromeDriver();
-
-
-        private IWebElement txtUserName => driver.FindElement(By.XPath("//*[@type='text']"));
-        private IWebElement txtPassword => driver.FindElement(By.XPath("//*[@id='password']"));
-        private IWebElement btnLogin => driver.FindElement(By.XPath("//*[@type='submit']"));
-        private IWebElement btnsignin => driver.FindElement(By.XPath("(//*[@class='linkedin'])[2]"));
+     
+        MemberPage memberPage = new MemberPage();
 
 
 
@@ -23,39 +19,45 @@ namespace SpecFlowDemo.StepDefinitions
         public void GivenILaunchTheApplicationWithURL(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
-            driver.Navigate().GoToUrl((string)data.URL);
-            driver.Manage().Window.Maximize();
+            memberPage.GivenLaunchThe((string)data.URL);
         }
         [Then(@"click on Sign In")]
         public void ThenClickOnSignIn()
         {
-            btnsignin.Click();
-            Thread.Sleep(1000);
+            memberPage.ClickSignIn();
+              Thread.Sleep(1000);
         }
 
         [Then(@"I enter the Username and Password")]
         public void ThenIEnterTheUsernameAndPassword(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
-            txtUserName.SendKeys((string)data.UserName);
-            Thread.Sleep(1000);
-            txtPassword.SendKeys((string)data.Password);
-            Thread.Sleep(1000);
+            memberPage.EnterValidCredentials((string)data.UserName, (string)data.Password);    
+            Thread.Sleep(1000);          
+            
         }
 
         [When(@"I click signin button")]
         public void WhenIClickSigninButton()
         {
-            btnLogin.Click();
+            memberPage.ClickTheLogin();
             Thread.Sleep(1000);
         }
+        [Then(@"Navigate for All Menu Pages")]
+        public void ThenNavigateForAllMenuPages()
+        {
+            memberPage.NavigateAllMenu();
+        }
+
 
         [Then(@"I click signout button")]
         public void ThenIClickSignoutButton()
         {
             Thread.Sleep(5000);
+            memberPage.CloseDriver();
 
-            driver.Dispose();
+
+
         }
 
 
