@@ -12,39 +12,27 @@ namespace SpecFlowDemo.Pages
 {
 
     
-    public class LoginPage
+    public class LoginPage : BasePageObject
     {
-        
-        ChromeDriver driver = new ChromeDriver();
-        public LoginPage()
-        {
-            
-        }
+        public LoginPage(IWebDriver webDriver) : base(webDriver) { }
+         
+ 
 
-        public void NavigateURL(string uRL)
-        {
-            driver.Navigate().GoToUrl(uRL);
-            driver.Manage().Window.Maximize();
-        } 
         public void LoadData(string username, string passowrd)
         {
-            driver.FindElement(By.XPath("//*[@type='text']")).SendKeys(username);
-            driver.FindElement(By.XPath("//*[@id='password']")).SendKeys(passowrd);
+            _webDriver.FindElement(By.XPath("//*[@type='text']")).SendKeys(username);
+            _webDriver.FindElement(By.XPath("//*[@id='password']")).SendKeys(passowrd);
         } 
         public void ClickLoginButton()
         {
-            driver.FindElement(By.XPath("//*[@type='submit']")).Click();
+            _webDriver.FindElement(By.XPath("//*[@type='submit']")).Click();
         }
         public void CheckDashboard()
         {
-            string Mytitle = driver.Title;
+            string Mytitle = _webDriver.Title;
             Assert.AreEqual("ReligiO", Mytitle);
         }
         
-
-
-
-
 
 
     }

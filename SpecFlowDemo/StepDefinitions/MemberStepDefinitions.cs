@@ -1,3 +1,4 @@
+using OpenQA.Selenium;
 using SpecFlowDemo.Pages;
 using System;
 using System.Security.Policy;
@@ -8,13 +9,19 @@ namespace SpecFlowDemo.StepDefinitions
 {
     [Binding]
     public class MemberStepDefinitions
-    {
-        MemberPage memberPage = new MemberPage();
-       
+    { 
+        private readonly MemberPage memberPage;
+
+        public MemberStepDefinitions(IWebDriver driver)
+        {
+            this.memberPage = new MemberPage(driver);
+        }
+
+
         [Given(@"Launch the valid url:")]
         public void GivenLaunchTheValidUrl(Table table)
         {
-            memberPage.GivenLaunchThe("https://churchar.cmallianceuu.org ");
+            memberPage.OpenWebDriver("https://churchar.cmallianceuu.org ");
         }
         [When(@"i click the Sign In Button")]
         public void WhenIClickTheSignInButton()

@@ -1,3 +1,4 @@
+using OpenQA.Selenium;
 using SpecFlowDemo.Pages;
 using System;
 using System.Security.Policy;
@@ -7,18 +8,20 @@ namespace SpecFlowDemo.StepDefinitions
 {
     [Binding]
     public class LoginStepDefinitions
-    {
-        LoginPage loginPage =new LoginPage();
+    { 
 
-        public LoginStepDefinitions() 
-        { 
-        
+        private readonly LoginPage loginPage;
+
+        public LoginStepDefinitions(IWebDriver driver)
+        {
+            this.loginPage = new LoginPage(driver);
         }
+        
 
         [Given(@"Launch the application with valid '([^']*)'")]
         public void GivenLaunchTheApplicationWithValid(string sURL)
         {
-            loginPage.NavigateURL(sURL);
+            loginPage.OpenWebDriver(sURL);
         }
 
         [When(@"Enter the '([^']*)' and '([^']*)'")]

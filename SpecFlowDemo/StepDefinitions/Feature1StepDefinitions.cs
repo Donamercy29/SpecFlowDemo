@@ -10,16 +10,20 @@ namespace SpecFlowDemo.StepDefinitions
     [Binding]
     public class Feature1StepDefinitions
     {
-     
-        MemberPage memberPage = new MemberPage();
 
+        private readonly MemberPage memberPage;
+
+        public Feature1StepDefinitions(IWebDriver driver)
+        {
+            this.memberPage = new MemberPage(driver);
+        }
 
 
         [Given(@"I launch the application with URL")]
         public void GivenILaunchTheApplicationWithURL(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
-            memberPage.GivenLaunchThe((string)data.URL);
+            memberPage.OpenWebDriver((string)data.URL);
         }
         [Then(@"click on Sign In")]
         public void ThenClickOnSignIn()
@@ -53,10 +57,7 @@ namespace SpecFlowDemo.StepDefinitions
         [Then(@"I click signout button")]
         public void ThenIClickSignoutButton()
         {
-            Thread.Sleep(5000);
-            memberPage.CloseDriver();
-
-
+            Thread.Sleep(5000); 
 
         }
 

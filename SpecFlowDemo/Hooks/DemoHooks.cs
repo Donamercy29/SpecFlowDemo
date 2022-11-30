@@ -1,35 +1,75 @@
-﻿using TechTalk.SpecFlow;
+﻿using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium;
+using System.ComponentModel;
+using TechTalk.SpecFlow;
+using BoDi;
 
 namespace SpecFlowDemo.Hooks
 {
     [Binding]
     public sealed class DemoHooks
     {
-        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
-        [BeforeScenario("@tag1")]
-        public void BeforeScenarioWithTag()
+        private readonly IObjectContainer container;
+        public DemoHooks(IObjectContainer container)
         {
-            // Example of filtering hooks using tags. (in this case, this 'before scenario' hook will execute if the feature/scenario contains the tag '@tag1')
-            // See https://docs.specflow.org/projects/specflow/en/latest/Bindings/Hooks.html?highlight=hooks#tag-scoping
-
-            //TODO: implement logic that has to run before executing each scenario
+            this.container = container;
         }
 
-        [BeforeScenario(Order = 1)]
-        public void FirstBeforeScenario()
+        [BeforeTestRun]
+        public static void BeforeTestRun()
+        { 
+        
+        }
+        [BeforeFeature]
+        public static void BeforeFeature() { 
+        
+        }
+        [BeforeScenario]
+        public void BeforeScenario() 
         {
-            // Example of ordering the execution of hooks
-            // See https://docs.specflow.org/projects/specflow/en/latest/Bindings/Hooks.html?highlight=order#hook-execution-order
+            // the IWebDriver interface
+            ChromeDriver driver = new ChromeDriver();
+            //ChromeDriver driver = new ChromeDriver();
 
-            //TODO: implement logic that has to run before executing each scenario
+
+            // Make 'driver' available for DI (Dependency injection)
+            container.RegisterInstanceAs<IWebDriver>(driver);
+
+
+        }
+        [BeforeStep]
+        public void BeforeStep() { 
+        
         }
 
-        [AfterScenario]
+        [AfterStep]
         public void AfterScenario()
         {
-            //TODO: implement logic that has to run after executing each scenario
+            IWebDriver driver = container.Resolve<IWebDriver>();
+            try
+            {
+                //driver.Close();
+                //driver.Dispose();
+            }
+            catch (Exception e)
+            {
+                e.GetBaseException();
+            }
         }
+        [AfterScenario]
+        public void AfterStep() {
+        
+        }
+        [AfterFeature]
+        public static void AfterFeature() { 
+        
+        }
+        [AfterTestRun]
+        public static void AfterTestRun() { 
+        
+        }
+
 
 
     }
