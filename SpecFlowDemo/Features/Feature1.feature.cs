@@ -102,24 +102,24 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "URL"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "https://churchar.cmallianceuu.org"});
 #line 7
- testRunner.Given("I launch the application with URL", ((string)(null)), table1, "Given ");
+ testRunner.Given("I launch the application with URL", ((string)(null)), table3, "Given ");
 #line hidden
 #line 10
     testRunner.Then("click on Sign In", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Password"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "Donamercy",
                             "Donamercy1"});
 #line 11
- testRunner.And("I enter the Username and Password", ((string)(null)), table2, "And ");
+ testRunner.And("I enter the Username and Password", ((string)(null)), table4, "And ");
 #line hidden
 #line 14
  testRunner.When("I click signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

@@ -20,22 +20,22 @@ namespace SpecFlowDemo.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Member")]
-    public partial class MemberFeature
+    [NUnit.Framework.DescriptionAttribute("Admin Dashboard")]
+    public partial class AdminDashboardFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Member.feature"
+#line 1 "AdminDashboard.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Member", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Admin Dashboard", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,15 +74,13 @@ namespace SpecFlowDemo.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Perform Login of  Application site")]
-        [NUnit.Framework.CategoryAttribute("Sprint01")]
-        public virtual void PerformLoginOfApplicationSite()
+        [NUnit.Framework.DescriptionAttribute("To test the Admin Dashboard functions")]
+        public virtual void ToTestTheAdminDashboardFunctions()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Sprint01"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Perform Login of  Application site", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("To test the Admin Dashboard functions", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 2
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,33 +100,33 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "URL"});
-                table5.AddRow(new string[] {
+                table1.AddRow(new string[] {
                             "https://churchar.cmallianceuu.org"});
-#line 7
- testRunner.Given("I launch the application with URL", ((string)(null)), table5, "Given ");
+#line 3
+ testRunner.Given("I launch  application with URL", ((string)(null)), table1, "Given ");
 #line hidden
-#line 10
-    testRunner.Then("click on Sign In", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 6
+    testRunner.Then("click on SignIn", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Password"});
-                table6.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "admin",
                             "admin@cmalliance.org"});
+#line 7
+ testRunner.And("I enter  Username and Password", ((string)(null)), table2, "And ");
+#line hidden
+#line 10
+ testRunner.When("I click Log in button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 11
- testRunner.And("I enter the Username and Password", ((string)(null)), table6, "And ");
+    testRunner.Then("I click Admin Dashboard menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 14
- testRunner.When("I click signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 15
-    testRunner.Then("Navigate for All Menu Pages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 16
- testRunner.Then("I click signout button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 12
+ testRunner.Then("Navigate for admin Menu Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
