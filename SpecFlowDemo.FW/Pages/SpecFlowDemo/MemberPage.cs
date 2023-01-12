@@ -1,7 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools.V105.Browser;
+using SpecFlowDemo.Pages;
+// using OpenQA.Selenium.DevTools.V105.Browser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace SpecFlowDemo.Pages
+namespace SpecFlowDemo.FW.Pages.SpecFlowDemo
 {
 
 
     public class MemberPage : BasePageObject
     {
         public MemberPage(IWebDriver webDriver) : base(webDriver) { }
-         
+
         private IWebElement txtUserName => _webDriver.FindElement(By.XPath("//*[@type='text']"));
         private IWebElement txtPassword => _webDriver.FindElement(By.XPath("//*[@id='password']"));
         private IWebElement btnLogin => _webDriver.FindElement(By.XPath("//*[@type='submit']"));
         private IWebElement btnsignin => _webDriver.FindElement(By.XPath("(//*[@class='linkedin'])[2]"));
-          
+
 
         public void ClickSignIn()
         {

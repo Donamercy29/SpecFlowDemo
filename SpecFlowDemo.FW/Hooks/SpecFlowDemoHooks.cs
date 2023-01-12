@@ -7,27 +7,25 @@ using BoDi;
 namespace SpecFlowDemo.Hooks
 {
     [Binding]
-    public sealed class DemoHooks
+    public sealed class SpecFlowDemoHooks
     {
 
         private readonly IObjectContainer container;
-        private SpecFlowDemoHooks specFlow;
-        public DemoHooks(IObjectContainer container, SpecFlowDemoHooks specFlow)
+        public SpecFlowDemoHooks(IObjectContainer container)
         {
             this.container = container;
-            this.specFlow = specFlow;
         }
 
-        [BeforeTestRun]
+        
         public static void BeforeTestRun()
         { 
         
         }
-        [BeforeFeature]
+       
         public static void BeforeFeature() { 
         
         }
-        [BeforeScenario]
+       
         public void BeforeScenario() 
         {
             // the IWebDriver interface
@@ -39,13 +37,10 @@ namespace SpecFlowDemo.Hooks
             container.RegisterInstanceAs<IWebDriver>(driver);
 
 
-        }
-        [BeforeStep]
+        } 
         public void BeforeStep() { 
         
-        }
-
-        [AfterStep]
+        } 
         public void AfterScenario()
         {
             IWebDriver driver = container.Resolve<IWebDriver>();
@@ -58,16 +53,13 @@ namespace SpecFlowDemo.Hooks
             {
                 e.GetBaseException();
             }
-        }
-        [AfterScenario]
+        } 
         public void AfterStep() {
         
-        }
-        [AfterFeature]
+        } 
         public static void AfterFeature() { 
         
-        }
-        [AfterTestRun]
+        } 
         public static void AfterTestRun() { 
         
         }

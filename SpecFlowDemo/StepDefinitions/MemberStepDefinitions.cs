@@ -1,5 +1,5 @@
 using OpenQA.Selenium;
-using SpecFlowDemo.Pages;
+using SpecFlowDemo.FW.Pages.SpecFlowDemo;
 using System;
 using System.Security.Policy;
 using System.Xml.Linq;

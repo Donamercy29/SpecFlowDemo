@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
-using SpecFlowDemo.Pages;
+using SpecFlowDemo.FW.Pages.SpecFlowDemo;
 
 namespace SpecFlowDemo.StepDefinitions
 {
